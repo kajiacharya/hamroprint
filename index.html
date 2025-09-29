@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PrintPro Solutions | Professional Printing Services</title>
+    <title>Hamro Print | Professional Printing & Design Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Base Styles */
         :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
+            --primary: #1a3a5f;
+            --secondary: #d4af37;
+            --accent: #c1272d;
+            --light: #f8f9fa;
+            --dark: #212529;
             --text: #333;
-            --text-light: #7f8c8d;
+            --text-light: #6c757d;
         }
         
         * {
@@ -26,7 +27,8 @@
         body {
             line-height: 1.6;
             color: var(--text);
-            background-color: #f9f9f9;
+            background-color: #ffffff;
+            overflow-x: hidden;
         }
         
         .container {
@@ -48,7 +50,7 @@
         .btn {
             display: inline-block;
             background: var(--secondary);
-            color: white;
+            color: var(--primary);
             padding: 12px 25px;
             border: none;
             border-radius: 4px;
@@ -57,19 +59,22 @@
             font-size: 16px;
             font-weight: 600;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
         .btn:hover {
-            background: #2980b9;
+            background: #b8941f;
             transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
         
         .btn-accent {
             background: var(--accent);
+            color: white;
         }
         
         .btn-accent:hover {
-            background: #c0392b;
+            background: #a02025;
         }
         
         section {
@@ -102,29 +107,36 @@
         /* Header Styles */
         header {
             background: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: all 0.3s ease;
         }
         
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 15px 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
         }
         
         .logo {
+            height: 60px;
+            width: auto;
+        }
+        
+        .logo-text {
             font-size: 24px;
             font-weight: 700;
             color: var(--primary);
-            text-decoration: none;
-        }
-        
-        .logo span {
-            color: var(--secondary);
+            margin-left: 10px;
         }
         
         nav ul {
@@ -141,21 +153,38 @@
             color: var(--dark);
             font-weight: 500;
             transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
         }
         
         nav ul li a:hover {
-            color: var(--secondary);
+            color: var(--primary);
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
         }
         
         .mobile-toggle {
             display: none;
             font-size: 24px;
             cursor: pointer;
+            color: var(--primary);
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1600857062244-5c0071b55e21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(26, 58, 95, 0.85), rgba(26, 58, 95, 0.9)), url('https://images.unsplash.com/photo-1600857062244-5c0071b55e21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             color: white;
@@ -173,12 +202,13 @@
             font-size: 20px;
             max-width: 700px;
             margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.9);
         }
         
         /* Services Section */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
         
@@ -186,20 +216,22 @@
             background: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--secondary);
         }
         
         .service-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
         .service-icon {
             background: var(--light);
-            padding: 30px;
+            padding: 25px;
             text-align: center;
             font-size: 40px;
-            color: var(--secondary);
+            color: var(--primary);
         }
         
         .service-content {
@@ -226,6 +258,7 @@
             overflow: hidden;
             border-radius: 8px;
             height: 250px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         .portfolio-item img {
@@ -245,7 +278,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(44, 62, 80, 0.8);
+            background: rgba(26, 58, 95, 0.85);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -279,11 +312,106 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
         
-        /* Contact Section */
-        .contact {
+        /* Process Section */
+        .process {
             background: var(--light);
         }
         
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            position: relative;
+        }
+        
+        .process-steps:before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: var(--secondary);
+            z-index: 1;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            padding: 0 15px;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+            border: 5px solid var(--light);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(rgba(26, 58, 95, 0.9), rgba(26, 58, 95, 0.9)), url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        
+        .testimonials .section-title h2 {
+            color: white;
+        }
+        
+        .testimonials .section-title h2:after {
+            background: var(--secondary);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        /* Contact Section */
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -308,16 +436,27 @@
             margin-right: 15px;
             color: var(--secondary);
             font-size: 20px;
+            width: 20px;
+            text-align: center;
         }
         
         .contact-form input,
-        .contact-form textarea {
+        .contact-form textarea,
+        .contact-form select {
             width: 100%;
             padding: 12px;
             margin-bottom: 20px;
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            border-color: var(--secondary);
+            outline: none;
         }
         
         .contact-form textarea {
@@ -374,6 +513,31 @@
             color: var(--secondary);
         }
         
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
         .copyright {
             text-align: center;
             padding-top: 30px;
@@ -391,6 +555,15 @@
             
             .about-image {
                 order: -1;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .process-steps:before {
+                display: none;
             }
         }
         
@@ -433,6 +606,10 @@
             section {
                 padding: 60px 0;
             }
+            
+            .logo-text {
+                font-size: 20px;
+            }
         }
     </style>
 </head>
@@ -440,14 +617,20 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="#" class="logo">Print<span>Pro</span> Solutions</a>
-            <div class="mobile-toggle">☰</div>
+            <div class="logo-container">
+                <img src="http://localhost/neptop/wp-content/uploads/2025/09/cropped-hamro-print-2.png" alt="Hamro Print Logo" class="logo">
+                <div class="logo-text">Hamro Print</div>
+            </div>
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#about">About</a></li>
+                    <li><a href="#process">Process</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -458,7 +641,7 @@
     <section class="hero" id="home">
         <div class="container">
             <h1>Professional Printing & Design Solutions</h1>
-            <p>We create impactful designs and high-quality prints that help your business stand out and succeed.</p>
+            <p>We create impactful designs and high-quality prints that help your business stand out and succeed. Your vision, our expertise.</p>
             <a href="#contact" class="btn">Get a Quote</a>
             <a href="#portfolio" class="btn btn-accent">View Our Work</a>
         </div>
@@ -473,56 +656,72 @@
             </div>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">🖋️</div>
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
                     <div class="service-content">
                         <h3>Logo Design</h3>
                         <p>Create a memorable brand identity with our custom logo design services that capture your business essence.</p>
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">📄</div>
+                    <div class="service-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
                     <div class="service-content">
                         <h3>Brochures & Catalogs</h3>
                         <p>Eye-catching brochures and catalogs that showcase your products and services effectively.</p>
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">📇</div>
+                    <div class="service-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
                     <div class="service-content">
                         <h3>Business Cards</h3>
                         <p>Professionally designed business cards that make a lasting impression on your clients.</p>
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">📝</div>
+                    <div class="service-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
                     <div class="service-content">
                         <h3>Letterheads</h3>
                         <p>Custom letterhead designs that maintain brand consistency across all your business communications.</p>
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🎨</div>
+                    <div class="service-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
                     <div class="service-content">
                         <h3>Brand Identity</h3>
                         <p>Complete brand identity packages including color schemes, typography, and brand guidelines.</p>
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">📢</div>
+                    <div class="service-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
                     <div class="service-content">
                         <h3>Marketing Materials</h3>
                         <p>Design and print of flyers, posters, banners, and other marketing collateral for your campaigns.</p>
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">📐</div>
+                    <div class="service-icon">
+                        <i class="fas fa-th-large"></i>
+                    </div>
                     <div class="service-content">
                         <h3>Layout Design</h3>
                         <p>Professional layout design for publications, magazines, and other printed materials.</p>
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">💻</div>
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
                     <div class="service-content">
                         <h3>Web Design</h3>
                         <p>Modern, responsive website designs that complement your print materials and enhance your online presence.</p>
@@ -591,14 +790,99 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>About PrintPro Solutions</h2>
-                    <p>With over 10 years of experience in the printing and design industry, PrintPro Solutions has established itself as a trusted partner for businesses seeking high-quality printed materials and compelling visual designs.</p>
+                    <h2>About Hamro Print</h2>
+                    <p>With over 10 years of experience in the printing and design industry, Hamro Print has established itself as a trusted partner for businesses seeking high-quality printed materials and compelling visual designs.</p>
                     <p>Our team of skilled designers and printing experts work closely with clients to understand their vision and deliver solutions that exceed expectations. We combine creative design with state-of-the-art printing technology to produce materials that make a lasting impression.</p>
                     <p>From small startups to established corporations, we've helped hundreds of businesses enhance their brand presence through effective design and premium printing.</p>
                     <a href="#contact" class="btn">Contact Us Today</a>
                 </div>
                 <div class="about-image">
                     <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Our Printing Facility">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Process</h2>
+                <p>How we deliver exceptional results for our clients</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Consultation</h3>
+                    <p>We discuss your requirements, goals, and vision to understand your needs.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Design & Concept</h3>
+                    <p>Our creative team develops concepts and designs based on your brief.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Review & Refine</h3>
+                    <p>We present designs for your feedback and make revisions as needed.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Production</h3>
+                    <p>We proceed with high-quality printing using the best materials.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <h3>Delivery</h3>
+                    <p>Your finished products are delivered on time and to your satisfaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Testimonials</h2>
+                <p>What our clients say about our services</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Hamro Print delivered exceptional business cards and brochures for our company. The quality and attention to detail were outstanding!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RS</div>
+                        <div>
+                            <h4>Ramesh Shrestha</h4>
+                            <p>CEO, Tech Solutions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The team at Hamro Print understood our vision perfectly. Our new logo and brand identity have received countless compliments."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SP</div>
+                        <div>
+                            <h4>Sunita Poudel</h4>
+                            <p>Owner, Fashion Boutique</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "From design to delivery, the process was smooth and professional. Our marketing materials have significantly boosted our brand visibility."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AK</div>
+                        <div>
+                            <h4>Anil Karki</h4>
+                            <p>Marketing Director, Retail Chain</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -617,21 +901,27 @@
                     <p>Ready to bring your design and printing projects to life? Contact us today to discuss your requirements.</p>
                     <div class="contact-details">
                         <div class="contact-detail">
-                            <i>📍</i>
-                            <p>123 Printing Street, Design District, City 10001</p>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>123 Printing Street, Kathmandu, Nepal</p>
                         </div>
                         <div class="contact-detail">
-                            <i>📞</i>
-                            <p>(555) 123-4567</p>
+                            <i class="fas fa-phone-alt"></i>
+                            <p>+977 1 4567890</p>
                         </div>
                         <div class="contact-detail">
-                            <i>✉️</i>
-                            <p>info@printprosolutions.com</p>
+                            <i class="fas fa-envelope"></i>
+                            <p>info@hamroprint.com</p>
                         </div>
                         <div class="contact-detail">
-                            <i>🕒</i>
-                            <p>Monday - Friday: 9am - 6pm</p>
+                            <i class="fas fa-clock"></i>
+                            <p>Sunday - Friday: 9am - 6pm</p>
                         </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div class="contact-form">
@@ -639,6 +929,17 @@
                         <input type="text" placeholder="Your Name" required>
                         <input type="email" placeholder="Your Email" required>
                         <input type="text" placeholder="Subject">
+                        <select>
+                            <option value="" disabled selected>Select Service</option>
+                            <option value="logo">Logo Design</option>
+                            <option value="brochure">Brochures & Catalogs</option>
+                            <option value="business-cards">Business Cards</option>
+                            <option value="letterheads">Letterheads</option>
+                            <option value="branding">Brand Identity</option>
+                            <option value="marketing">Marketing Materials</option>
+                            <option value="layout">Layout Design</option>
+                            <option value="web">Web Design</option>
+                        </select>
                         <textarea placeholder="Your Message" required></textarea>
                         <button type="submit" class="btn">Send Message</button>
                     </form>
@@ -652,8 +953,14 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>PrintPro Solutions</h3>
+                    <h3>Hamro Print</h3>
                     <p>Your trusted partner for professional printing and design services that elevate your brand and drive business success.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
@@ -676,17 +983,16 @@
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Connect With Us</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">LinkedIn</a></li>
-                    </ul>
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for the latest updates and offers.</p>
+                    <form>
+                        <input type="email" placeholder="Your Email" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 4px; border: none;">
+                        <button type="submit" class="btn" style="width: 100%;">Subscribe</button>
+                    </form>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 PrintPro Solutions. All rights reserved.</p>
+                <p>&copy; 2023 Hamro Print. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -716,6 +1022,18 @@
                     document.querySelector('nav').classList.remove('active');
                 }
             });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '5px 0';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.padding = '15px 0';
+                header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+            }
         });
     </script>
 </body>
