@@ -8,9 +8,9 @@
     <style>
         /* Base Styles */
         :root {
-            --primary: #1a3a5f;
-            --secondary: #d4af37;
-            --accent: #c1272d;
+            --primary: #2f42d3;
+            --secondary: #ef5b5b;
+            --accent: #000000;
             --light: #f8f9fa;
             --dark: #212529;
             --text: #333;
@@ -50,7 +50,7 @@
         .btn {
             display: inline-block;
             background: var(--secondary);
-            color: var(--primary);
+            color: white;
             padding: 12px 25px;
             border: none;
             border-radius: 4px;
@@ -63,18 +63,18 @@
         }
         
         .btn:hover {
-            background: #b8941f;
+            background: #e04a4a;
             transform: translateY(-2px);
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
         
         .btn-accent {
-            background: var(--accent);
+            background: var(--primary);
             color: white;
         }
         
         .btn-accent:hover {
-            background: #a02025;
+            background: #2638b5;
         }
         
         section {
@@ -156,6 +156,15 @@
             position: relative;
         }
         
+        nav ul li a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        nav ul li a.active:after {
+            width: 100%;
+        }
+        
         nav ul li a:after {
             content: '';
             position: absolute;
@@ -184,7 +193,7 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(26, 58, 95, 0.85), rgba(26, 58, 95, 0.9)), url('https://images.unsplash.com/photo-1600857062244-5c0071b55e21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(47, 66, 211, 0.85), rgba(47, 66, 211, 0.9)), url('https://images.unsplash.com/photo-1600857062244-5c0071b55e21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             color: white;
@@ -278,7 +287,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(26, 58, 95, 0.85);
+            background: rgba(47, 66, 211, 0.85);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -360,7 +369,7 @@
         
         /* Testimonials */
         .testimonials {
-            background: linear-gradient(rgba(26, 58, 95, 0.9), rgba(26, 58, 95, 0.9)), url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(47, 66, 211, 0.9), rgba(47, 66, 211, 0.9)), url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             color: white;
@@ -407,8 +416,78 @@
             align-items: center;
             justify-content: center;
             margin-right: 15px;
-            color: var(--primary);
+            color: white;
             font-weight: bold;
+        }
+        
+        /* Customer Reviews Section */
+        .reviews {
+            background: var(--light);
+        }
+        
+        .review-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .review-slider {
+            overflow: hidden;
+        }
+        
+        .review-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .review-slide {
+            min-width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+        
+        .review-stars {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .review-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .review-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 10px;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .slider-dot.active {
+            background: var(--primary);
         }
         
         /* Contact Section */
@@ -534,7 +613,7 @@
         
         .social-links a:hover {
             background: var(--secondary);
-            color: var(--primary);
+            color: white;
             transform: translateY(-3px);
         }
         
@@ -544,6 +623,26 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #bdc3c7;
             font-size: 14px;
+        }
+        
+        /* Logo Styles */
+        .custom-logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 50%, var(--secondary) 50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 10px;
         }
         
         /* Responsive Styles */
@@ -618,19 +717,22 @@
     <header>
         <div class="container header-container">
             <div class="logo-container">
-                <img src="http://localhost/neptop/wp-content/uploads/2025/09/cropped-hamro-print-2.png" alt="Hamro Print Logo" class="logo">
-                <div class="logo-text">Hamro Print</div>
+                <div class="custom-logo">
+                    <div class="logo-circle">HP</div>
+                    <div class="logo-text">Hamro Print</div>
+                </div>
             </div>
             <div class="mobile-toggle">
                 <i class="fas fa-bars"></i>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#home">Home</a></li>
+                    <li><a href="#home" class="active">Home</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#process">Process</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -660,17 +762,26 @@
                         <i class="fas fa-palette"></i>
                     </div>
                     <div class="service-content">
-                        <h3>Logo Design</h3>
+                        <h3>Logo Design & Branding</h3>
                         <p>Create a memorable brand identity with our custom logo design services that capture your business essence.</p>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-book-open"></i>
+                        <i class="fas fa-camera-retro"></i>
                     </div>
                     <div class="service-content">
-                        <h3>Brochures & Catalogs</h3>
-                        <p>Eye-catching brochures and catalogs that showcase your products and services effectively.</p>
+                        <h3>Photo Editing & Retouching</h3>
+                        <p>Professional photo editing and retouching services to enhance your product and business images.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Food & Product Labels</h3>
+                        <p>Eye-catching labels for food products and merchandise that comply with industry standards.</p>
                     </div>
                 </div>
                 <div class="service-card">
@@ -678,44 +789,26 @@
                         <i class="fas fa-id-card"></i>
                     </div>
                     <div class="service-content">
-                        <h3>Business Cards</h3>
-                        <p>Professionally designed business cards that make a lasting impression on your clients.</p>
+                        <h3>Business Cards, Flyers & Posters</h3>
+                        <p>Professionally designed business cards, flyers, and posters that make a lasting impression.</p>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-file-alt"></i>
+                        <i class="fas fa-book-open"></i>
                     </div>
                     <div class="service-content">
-                        <h3>Letterheads</h3>
-                        <p>Custom letterhead designs that maintain brand consistency across all your business communications.</p>
+                        <h3>Brochures, Booklets & Menus</h3>
+                        <p>Well-designed brochures, booklets, and menus that showcase your products and services effectively.</p>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-certificate"></i>
+                        <i class="fas fa-file-invoice"></i>
                     </div>
                     <div class="service-content">
-                        <h3>Brand Identity</h3>
-                        <p>Complete brand identity packages including color schemes, typography, and brand guidelines.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3>Marketing Materials</h3>
-                        <p>Design and print of flyers, posters, banners, and other marketing collateral for your campaigns.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-th-large"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3>Layout Design</h3>
-                        <p>Professional layout design for publications, magazines, and other printed materials.</p>
+                        <h3>Invoices, Letterheads & Banners</h3>
+                        <p>Professional invoices, letterheads, and banners that maintain brand consistency.</p>
                     </div>
                 </div>
                 <div class="service-card">
@@ -723,8 +816,17 @@
                         <i class="fas fa-laptop-code"></i>
                     </div>
                     <div class="service-content">
-                        <h3>Web Design</h3>
-                        <p>Modern, responsive website designs that complement your print materials and enhance your online presence.</p>
+                        <h3>Corporate & E-commerce Web Design</h3>
+                        <p>Modern, responsive website designs for corporate and e-commerce businesses.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Social Media Setup & Design</h3>
+                        <p>Complete social media setup including profile design, banners, and ad creatives for Facebook, Instagram, and Google Business.</p>
                     </div>
                 </div>
             </div>
@@ -840,6 +942,66 @@
         </div>
     </section>
 
+    <!-- Customer Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+                <p>Hear from businesses we've helped with our printing and design services</p>
+            </div>
+            <div class="review-container">
+                <div class="review-slider">
+                    <div class="review-track">
+                        <div class="review-slide">
+                            <div class="review-card">
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="review-text">"Hamro Print transformed our brand identity with their exceptional logo design and business cards. The quality of printing is outstanding and their attention to detail is remarkable."</p>
+                                <p class="review-author">- Suresh Adhikari, Restaurant Owner</p>
+                            </div>
+                        </div>
+                        <div class="review-slide">
+                            <div class="review-card">
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="review-text">"We've been using Hamro Print for all our marketing materials for over 3 years. Their designs are always creative, and the print quality consistently exceeds our expectations."</p>
+                                <p class="review-author">- Priya Shrestha, Marketing Manager</p>
+                            </div>
+                        </div>
+                        <div class="review-slide">
+                            <div class="review-card">
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="review-text">"The team at Hamro Print helped us set up our complete social media presence with stunning profile designs and banners. Our online engagement has increased significantly since then."</p>
+                                <p class="review-author">- Raj Kumar, E-commerce Store Owner</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-nav">
+                    <div class="slider-dot active"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Testimonials Section -->
     <section class="testimonials">
         <div class="container">
@@ -932,13 +1094,13 @@
                         <select>
                             <option value="" disabled selected>Select Service</option>
                             <option value="logo">Logo Design</option>
-                            <option value="brochure">Brochures & Catalogs</option>
+                            <option value="photo">Photo Editing</option>
+                            <option value="labels">Product Labels</option>
                             <option value="business-cards">Business Cards</option>
+                            <option value="brochure">Brochures & Catalogs</option>
                             <option value="letterheads">Letterheads</option>
-                            <option value="branding">Brand Identity</option>
-                            <option value="marketing">Marketing Materials</option>
-                            <option value="layout">Layout Design</option>
                             <option value="web">Web Design</option>
+                            <option value="social">Social Media Setup</option>
                         </select>
                         <textarea placeholder="Your Message" required></textarea>
                         <button type="submit" class="btn">Send Message</button>
@@ -976,9 +1138,9 @@
                     <h3>Services</h3>
                     <ul class="footer-links">
                         <li><a href="#">Logo Design</a></li>
-                        <li><a href="#">Brochures & Catalogs</a></li>
+                        <li><a href="#">Photo Editing</a></li>
+                        <li><a href="#">Product Labels</a></li>
                         <li><a href="#">Business Cards</a></li>
-                        <li><a href="#">Letterheads</a></li>
                         <li><a href="#">Web Design</a></li>
                     </ul>
                 </div>
@@ -1018,6 +1180,12 @@
                         behavior: 'smooth'
                     });
                     
+                    // Update active nav link
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
                     // Close mobile menu if open
                     document.querySelector('nav').classList.remove('active');
                 }
@@ -1034,7 +1202,56 @@
                 header.style.padding = '15px 0';
                 header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
             }
+            
+            // Update active nav link based on scroll position
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
         });
+        
+        // Review Slider
+        const reviewTrack = document.querySelector('.review-track');
+        const reviewSlides = document.querySelectorAll('.review-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+        
+        function goToSlide(slideIndex) {
+            reviewTrack.style.transform = `translateX(-${slideIndex * 100}%)`;
+            currentSlide = slideIndex;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === slideIndex);
+            });
+        }
+        
+        // Add click events to dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+            });
+        });
+        
+        // Auto slide every 5 seconds
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % reviewSlides.length;
+            goToSlide(currentSlide);
+        }, 5000);
     </script>
 </body>
 </html>
