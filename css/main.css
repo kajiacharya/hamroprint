@@ -31,7 +31,7 @@
     --radius-xl: 1.5rem;
     --transition: all 0.3s ease;
     --transition-fast: all 0.15s ease;
-    --container-max: 1200px;
+    
     --header-height: 80px;
 }
 
@@ -75,12 +75,7 @@ ul, ol {
     list-style: none;
 }
 
-.container {
-    width: 100%;
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 0 1.5rem;
-}
+
 
 .sr-only {
     position: absolute;
