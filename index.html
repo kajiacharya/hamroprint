@@ -1,1109 +1,1762 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamro Print | Professional Printing & Design Services</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+
+    <!-- Consolidated CSS -->
     <style>
-        /* Base Styles */
+        /* ===== CSS VARIABLES & RESET ===== */
         :root {
             --primary: #2f42d3;
-            --secondary: #ef5b5b;
-            --accent: #000000;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --text: #333;
-            --text-light: #6c757d;
+            --primary-dark: #1e2fa0;
+            --primary-light: #5c74ff;
+            --secondary: #e67e22;
+            --accent: #3498db;
+            --success: #10b981;
+            --danger: #e74c3c;
+            --warning: #f59e0b;
+            --dark: #1e293b;
+            --gray-900: #1e293b;
+            --gray-800: #334155;
+            --gray-700: #475569;
+            --gray-600: #64748b;
+            --gray-500: #94a3b8;
+            --gray-400: #cbd5e1;
+            --gray-300: #e2e8f0;
+            --gray-200: #f1f5f9;
+            --gray-100: #f8fafc;
+            --white: #ffffff;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-sm: 0.375rem;
+            --radius: 0.5rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+            --transition: all 0.3s ease;
+            --transition-fast: all 0.15s ease;
+            --container-max: 1200px;
+            --header-height: 80px;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
+            font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: var(--text);
-            background-color: #ffffff;
+            color: var(--gray-800);
+            background-color: var(--white);
             overflow-x: hidden;
         }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
+
+        img {
+            max-width: 100%;
+            height: auto;
         }
-        
-        h1, h2, h3, h4 {
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-        
-        p {
-            margin-bottom: 15px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: var(--secondary);
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
+
+        a {
+            color: inherit;
             text-decoration: none;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: var(--transition-fast);
         }
-        
-        .btn:hover {
-            background: #e04a4a;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+
+        button {
+            cursor: pointer;
+            font-family: inherit;
+            border: none;
+            background: none;
         }
-        
-        .btn-accent {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .btn-accent:hover {
-            background: #2638b5;
-        }
-        
-        section {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 36px;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-        }
-        
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            width: 70px;
-            height: 3px;
-            background: var(--secondary);
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        /* Header Styles */
-        header {
-            background: white;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-        
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo {
-            height: 60px;
-            width: auto;
-        }
-        
-        .logo-text {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-left: 10px;
-        }
-        
-        nav ul {
-            display: flex;
+
+        ul, ol {
             list-style: none;
         }
-        
-        nav ul li {
-            margin-left: 30px;
-        }
-        
-        nav ul li a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-        }
-        
-        nav ul li a.active {
-            color: var(--primary);
-            font-weight: 600;
-        }
-        
-        nav ul li a.active:after {
+
+        .container {
             width: 100%;
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 1.5rem;
         }
-        
-        nav ul li a:after {
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .site-header.scrolled {
+            box-shadow: var(--shadow);
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: var(--header-height);
+        }
+
+        .site-logo img {
+            height: 60px;
+            width: auto;
+            transition: var(--transition);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--gray-700);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link:hover,
+        .nav-link:focus {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
             content: '';
             position: absolute;
+            bottom: 0;
+            left: 0;
             width: 0;
             height: 2px;
-            background: var(--secondary);
-            bottom: -5px;
-            left: 0;
-            transition: width 0.3s;
+            background-color: var(--primary);
+            transition: var(--transition);
         }
-        
-        nav ul li a:hover {
-            color: var(--primary);
-        }
-        
-        nav ul li a:hover:after {
+
+        .nav-link:hover::after,
+        .nav-link:focus::after {
             width: 100%;
         }
-        
-        .mobile-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--primary);
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(47, 66, 211, 0.85), rgba(47, 66, 211, 0.9)), url('https://images.unsplash.com/photo-1600857062244-5c0071b55e21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 180px 0 100px;
-        }
-        
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: white;
-        }
-        
-        .hero p {
-            font-size: 20px;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .service-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-top: 4px solid var(--secondary);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .service-icon {
-            background: var(--light);
-            padding: 25px;
-            text-align: center;
-            font-size: 40px;
-            color: var(--primary);
-        }
-        
-        .service-content {
-            padding: 25px;
-        }
-        
-        .service-content h3 {
-            font-size: 22px;
-        }
-        
-        /* Portfolio Section */
-        .portfolio {
-            background: var(--light);
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .portfolio-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            height: 250px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .portfolio-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(47, 66, 211, 0.85);
+
+        .nav-actions {
             display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius);
+            color: var(--gray-700);
+            transition: var(--transition);
+        }
+
+        .nav-icon:hover,
+        .nav-icon:focus {
+            background-color: var(--gray-100);
+            color: var(--primary);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background-color: var(--primary);
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 600;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .account-dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 200px;
+            background-color: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            padding: 0.5rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .account-dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-link {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--gray-700);
+            font-weight: 500;
+        }
+
+        .dropdown-link:hover,
+        .dropdown-link:focus {
+            background-color: var(--gray-100);
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-            color: white;
-            padding: 20px;
-            text-align: center;
+            width: 30px;
+            height: 30px;
+            gap: 4px;
+            cursor: pointer;
         }
-        
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-        
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-        
-        .about-text h2 {
-            font-size: 36px;
-        }
-        
-        .about-image img {
+
+        .menu-toggle span {
+            display: block;
+            height: 2px;
             width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background-color: var(--gray-700);
+            transition: var(--transition);
         }
-        
-        /* Process Section */
-        .process {
-            background: var(--light);
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
         }
-        
-        .process-steps {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 50px;
-            position: relative;
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
         }
-        
-        .process-steps:before {
-            content: '';
-            position: absolute;
-            top: 40px;
-            left: 10%;
-            right: 10%;
-            height: 3px;
-            background: var(--secondary);
-            z-index: 1;
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
         }
-        
-        .process-step {
+
+        /* ===== SECTIONS COMMON STYLES ===== */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-sm {
+            padding: 3rem 0;
+        }
+
+        .section-lg {
+            padding: 7rem 0;
+        }
+
+        .section-title {
             text-align: center;
-            position: relative;
-            z-index: 2;
-            flex: 1;
-            padding: 0 15px;
+            margin-bottom: 3rem;
         }
-        
-        .step-number {
-            width: 80px;
-            height: 80px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            font-weight: bold;
-            margin: 0 auto 20px;
-            border: 5px solid var(--light);
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+            line-height: 1.2;
         }
-        
-        /* Testimonials */
-        .testimonials {
-            background: linear-gradient(rgba(47, 66, 211, 0.9), rgba(47, 66, 211, 0.9)), url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-        }
-        
-        .testimonials .section-title h2 {
-            color: white;
-        }
-        
-        .testimonials .section-title h2:after {
-            background: var(--secondary);
-        }
-        
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-        
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            color: white;
-            font-weight: bold;
-        }
-        
-        /* Customer Reviews Section */
-        .reviews {
-            background: var(--light);
-        }
-        
-        .review-container {
-            max-width: 800px;
+
+        .section-title p {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            max-width: 600px;
             margin: 0 auto;
-            position: relative;
         }
-        
-        .review-slider {
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--gray-100) 0%, var(--white) 100%);
             overflow: hidden;
         }
-        
-        .review-track {
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            opacity: 0.05;
+            clip-path: polygon(100% 0, 100% 100%, 0 100%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--white);
+            color: var(--primary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--gray-900);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title .highlight {
+            color: var(--primary);
+            position: relative;
+        }
+
+        .hero-title .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background-color: rgba(47, 66, 211, 0.15);
+            z-index: -1;
+            border-radius: 2px;
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .feature-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background-color: var(--success);
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 0.875rem;
+        }
+
+        .feature-text {
+            font-weight: 500;
+            color: var(--gray-700);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-secondary:hover,
+        .btn-secondary:focus {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin-top: 0.5rem;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-image {
+            position: relative;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .hero-image:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .play-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .play-button:hover,
+        .play-button:focus {
+            background: var(--white);
+            transform: scale(1.1);
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: var(--radius-lg);
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .service-features {
+            margin-top: auto;
+        }
+
+        .service-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--gray-700);
+        }
+
+        .service-feature i {
+            color: var(--success);
+            font-size: 0.875rem;
+        }
+
+        /* ===== PRODUCTS SECTION ===== */
+        .products-section {
+            background-color: var(--gray-100);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: var(--danger);
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .rating-stars {
+            display: flex;
+            color: var(--warning);
+        }
+
+        .rating-count {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price-current {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .price-original {
+            font-size: 1rem;
+            color: var(--gray-500);
+            text-decoration: line-through;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-add-cart {
+            flex: 1;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-add-cart:hover,
+        .btn-add-cart:focus {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-wishlist {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background-color: var(--gray-100);
+            color: var(--gray-700);
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .btn-wishlist:hover,
+        .btn-wishlist:focus {
+            background-color: var(--gray-200);
+            color: var(--danger);
+        }
+
+        .view-all {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* ===== TESTIMONIALS SECTION ===== */
+        .testimonials-section {
+            background: linear-gradient(135deg, var(--gray-900) 0%, var(--dark) 100%);
+            color: var(--white);
+        }
+
+        .testimonials-section .section-title h2,
+        .testimonials-section .section-title p {
+            color: var(--white);
+        }
+
+        .testimonials-slider {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-track {
             display: flex;
             transition: transform 0.5s ease;
         }
-        
-        .review-slide {
-            min-width: 100%;
-            padding: 0 20px;
-            box-sizing: border-box;
+
+        .testimonial-slide {
+            flex: 0 0 100%;
+            padding: 0 1rem;
         }
-        
-        .review-card {
-            background: white;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
             text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
-        .review-stars {
-            color: var(--secondary);
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-        
-        .review-text {
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-        
-        .review-author {
-            font-weight: 600;
-            color: var(--primary);
-        }
-        
-        .slider-nav {
+
+        .testimonial-rating {
             display: flex;
             justify-content: center;
-            margin-top: 30px;
-            gap: 10px;
+            gap: 0.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--warning);
         }
-        
+
+        .testimonial-text {
+            font-size: 1.125rem;
+            font-style: italic;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .author-info p {
+            color: var(--gray-400);
+            font-size: 0.875rem;
+        }
+
+        .slider-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .slider-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .slider-btn:hover,
+        .slider-btn:focus {
+            background-color: var(--primary);
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
         .slider-dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: #ccc;
-            cursor: pointer;
-            transition: background 0.3s;
+            background-color: rgba(255, 255, 255, 0.3);
+            transition: var(--transition);
         }
-        
+
         .slider-dot.active {
-            background: var(--primary);
+            background-color: var(--white);
         }
-        
-        /* Contact Section */
-        .contact-container {
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            grid-template-columns: 1fr;
+            gap: 3rem;
         }
-        
-        .contact-info h3 {
-            margin-bottom: 20px;
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
-        
-        .contact-details {
-            margin-bottom: 30px;
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
         }
-        
-        .contact-detail {
+
+        .contact-icon {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: var(--radius-lg);
+            flex-shrink: 0;
         }
-        
-        .contact-detail i {
-            margin-right: 15px;
-            color: var(--secondary);
-            font-size: 20px;
-            width: 20px;
-            text-align: center;
+
+        .contact-details h3 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
-        
-        .contact-form input,
-        .contact-form textarea,
-        .contact-form select {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-            transition: border 0.3s;
+
+        .contact-details p {
+            color: var(--gray-600);
         }
-        
-        .contact-form input:focus,
-        .contact-form textarea:focus,
-        .contact-form select:focus {
-            border-color: var(--secondary);
-            outline: none;
+
+        .contact-form {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
         }
-        
-        .contact-form textarea {
-            height: 150px;
-            resize: vertical;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 60px 0 30px;
-        }
-        
-        .footer-content {
+
+        .form-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
-        
-        .footer-column h3 {
-            color: white;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 10px;
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
         }
-        
-        .footer-column h3:after {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 2px;
-            background: var(--secondary);
-            bottom: 0;
-            left: 0;
+
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--gray-700);
         }
-        
-        .footer-links {
-            list-style: none;
+
+        .form-control {
+            padding: 0.875rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: var(--transition);
         }
-        
-        .footer-links li {
-            margin-bottom: 10px;
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(47, 66, 211, 0.1);
         }
-        
-        .footer-links a {
-            color: #bdc3c7;
-            text-decoration: none;
-            transition: color 0.3s;
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
         }
-        
-        .footer-links a:hover {
-            color: var(--secondary);
+
+        .form-submit {
+            margin-top: 1rem;
         }
-        
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            background-color: var(--gray-900);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand p {
+            color: var(--gray-400);
+            margin-bottom: 2rem;
+            max-width: 300px;
+        }
+
         .social-links {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 1rem;
         }
-        
-        .social-links a {
+
+        .social-link {
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 44px;
+            height: 44px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .social-link:hover,
+        .social-link:focus {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .footer-heading {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
             width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s;
+            height: 2px;
+            background-color: var(--primary);
         }
-        
-        .social-links a:hover {
-            background: var(--secondary);
-            color: white;
-            transform: translateY(-3px);
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
         }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
+
+        .footer-links a {
+            color: var(--gray-400);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover,
+        .footer-links a:focus {
+            color: var(--white);
+            padding-left: 0.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .newsletter-input {
+            padding: 0.875rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius);
+            color: var(--white);
+            font-size: 1rem;
+        }
+
+        .newsletter-input::placeholder {
+            color: var(--gray-500);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #bdc3c7;
-            font-size: 14px;
-        }
-        
-        /* Logo Styles */
-        .custom-logo {
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            gap: 1.5rem;
+            text-align: center;
         }
-        
-        .logo-circle {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary) 50%, var(--secondary) 50%);
+
+        .footer-bottom p {
+            color: var(--gray-400);
+        }
+
+        .payment-methods {
             display: flex;
-            align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            margin-right: 10px;
+            gap: 1rem;
         }
-        
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .about-content,
-            .contact-container {
-                grid-template-columns: 1fr;
+
+        .payment-icon {
+            font-size: 1.5rem;
+            color: var(--gray-500);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (min-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr 1fr;
             }
             
-            .about-image {
-                order: -1;
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
             }
             
-            .process-steps {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+            
+            .payment-methods {
+                justify-content: flex-end;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .form-grid .form-group:last-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 300px;
+                height: 100vh;
+                background-color: var(--white);
                 flex-direction: column;
-                gap: 40px;
+                padding: 2rem;
+                box-shadow: var(--shadow-lg);
+                transition: var(--transition);
+                z-index: 1000;
             }
             
-            .process-steps:before {
-                display: none;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .mobile-toggle {
-                display: block;
+            .nav-menu.active {
+                right: 0;
             }
             
-            nav {
-                position: absolute;
-                top: 100%;
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-overlay {
+                position: fixed;
+                top: 0;
                 left: 0;
                 width: 100%;
-                background: white;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-                display: none;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                z-index: 999;
             }
             
-            nav.active {
-                display: block;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                padding: 20px;
-            }
-            
-            nav ul li {
-                margin: 10px 0;
-            }
-            
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            section {
-                padding: 60px 0;
-            }
-            
-            .logo-text {
-                font-size: 20px;
+            .nav-overlay.active {
+                opacity: 1;
+                visibility: visible;
             }
         }
+
+        @media (max-width: 640px) {
+            .hero-actions {
+                flex-direction: column;
+            }
+            
+            .hero-stats {
+                justify-content: space-around;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .section-lg {
+                padding: 5rem 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* ===== ACCESSIBILITY ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        .focus-visible:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* ===== UTILITY CLASSES ===== */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 1.5rem; }
+        .mb-4 { margin-bottom: 2rem; }
+        .mb-5 { margin-bottom: 3rem; }
+
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+        .mt-4 { margin-top: 2rem; }
+        .mt-5 { margin-top: 3rem; }
+
+        .px-1 { padding-left: 0.5rem; padding-right: 0.5rem; }
+        .px-2 { padding-left: 1rem; padding-right: 1rem; }
+        .px-3 { padding-left: 1.5rem; padding-right: 1.5rem; }
+        .px-4 { padding-left: 2rem; padding-right: 2rem; }
+        .px-5 { padding-left: 3rem; padding-right: 3rem; }
+
+        .py-1 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+        .py-2 { padding-top: 1rem; padding-bottom: 1rem; }
+        .py-3 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+        .py-4 { padding-top: 2rem; padding-bottom: 2rem; }
+        .py-5 { padding-top: 3rem; padding-bottom: 3rem; }
     </style>
+
+    <!-- SEO and Meta Tags -->
+    <title>Canvas Print Pro | Professional Printing Services</title>
+    <meta name="description" content="Professional canvas printing, marketing materials, and custom printing services. Fast turnaround, premium quality, and satisfaction guaranteed.">
+    <meta name="keywords" content="canvas printing, custom prints, marketing materials, banners, signage, professional printing">
+    
+    <!-- Preconnect to improve performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo-container">
-                <div class="custom-logo">
-                    <img src="https://raw.githubusercontent.com/kajiacharya/hamroprint/refs/heads/main/img/Hamro%20Print%20logo.png">
-
+    <header class="site-header" id="header">
+        <div class="container">
+            <div class="header-container">
+                <!-- Logo -->
+                <div class="site-logo">
+                    <a href="/" aria-label="Canvas Print Pro Home">
+                        <img src="http://localhost/neptop/wp-content/uploads/2025/09/cropped-hamro-print-2.png" 
+                             alt="Canvas Print Pro" 
+                             width="200" 
+                             height="50">
+                    </a>
                 </div>
+
+                <!-- Navigation Menu -->
+                <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+                    <ul class="nav-links">
+                        <li><a href="#home" class="nav-link">Home</a></li>
+                        <li><a href="#services" class="nav-link">Services</a></li>
+                        <li><a href="#products" class="nav-link">Products</a></li>
+                        <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                        <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+
+                    <div class="nav-actions">
+                        <!-- Account Dropdown -->
+                        <div class="account-dropdown">
+                            <button class="nav-icon" aria-expanded="false" aria-controls="accountDropdown">
+                                <i class="fas fa-user"></i>
+                            </button>
+                            <div class="dropdown-content" id="accountDropdown">
+                                <a href="/my-account" class="dropdown-link">Sign In</a>
+                                <a href="/my-account" class="dropdown-link">Create Account</a>
+                                <a href="/orders" class="dropdown-link">My Orders</a>
+                            </div>
+                        </div>
+
+                        <!-- Cart -->
+                        <a href="/cart" class="nav-icon" aria-label="Shopping cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </div>
+                </nav>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-            <div class="mobile-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#process">Process</a></li>
-                    <li><a href="#reviews">Reviews</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
         </div>
+        
+        <!-- Mobile Overlay -->
+        <div class="nav-overlay" id="navOverlay"></div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero section-lg" id="home">
         <div class="container">
-            <h1>Professional Printing & Design Solutions</h1>
-            <p>We create impactful designs and high-quality prints that help your business stand out and succeed. Your vision, our expertise.</p>
-            <a href="#contact" class="btn">Get a Quote</a>
-            <a href="#portfolio" class="btn btn-accent">View Our Work</a>
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <span class="hero-badge">
+                        <i class="fas fa-bolt"></i> Fast Turnaround
+                        <i class="fas fa-star"></i> Premium Quality
+                        <i class="fas fa-truck"></i> Local Pickup
+                    </span>
+                    
+                    <h1 class="hero-title">
+                        Bring Your <span class="highlight">Ideas</span> to Life with Professional Canvas & Printing
+                    </h1>
+                    
+                    <p class="hero-description">
+                        Custom canvas prints, marketing materials, apparel, banners, stickers, and more. 
+                        Perfect for homes, offices, restaurants, events, and businesses.
+                    </p>
+                    
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">
+                                <i class="fas fa-check"></i>
+                            </span>
+                            <span class="feature-text">Free Consultation</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">
+                                <i class="fas fa-check"></i>
+                            </span>
+                            <span class="feature-text">24-48hr Turnaround</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">
+                                <i class="fas fa-check"></i>
+                            </span>
+                            <span class="feature-text">Satisfaction Guaranteed</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+                        <a href="#services" class="btn btn-secondary">Explore Services</a>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Happy Clients</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">98%</span>
+                            <span class="stat-label">Satisfaction Rate</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">24h</span>
+                            <span class="stat-label">Avg. Turnaround</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="hero-image">
+                        <img src="https://www.ketegroup.com/wp-content/uploads/2024/06/web-press.webp" 
+                             alt="Professional canvas printing services and colorful banners" 
+                             loading="eager"
+                             width="600"
+                             height="450">
+                        <div class="image-overlay">
+                            <button class="play-button" aria-label="Watch video about our services">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services">
+    <section class="section" id="services">
         <div class="container">
             <div class="section-title">
                 <h2>Our Services</h2>
-                <p>Comprehensive printing and design solutions for all your business needs</p>
+                <p>We offer comprehensive printing solutions for businesses of all sizes, from startup marketing materials to enterprise-level campaigns.</p>
             </div>
+            
             <div class="services-grid">
+                <!-- Service 1 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-palette"></i>
+                        <i class="fas fa-print"></i>
                     </div>
-                    <div class="service-content">
-                        <h3>Logo Design & Branding</h3>
-                        <p>Create a memorable brand identity with our custom logo design services that capture your business essence.</p>
-                    </div>
+                    <h3 class="service-title">Commercial Printing</h3>
+                    <p class="service-description">
+                        High-volume commercial printing with consistent quality and fast turnaround times for all your business needs.
+                    </p>
+                    <ul class="service-features">
+                        <li class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Brochures & Catalogs</span>
+                        </li>
+                        <li class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Business Cards</span>
+                        </li>
+                        <li class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Letterheads & Flyers</span>
+                        </li>
+                    </ul>
                 </div>
+                
+                <!-- Service 2 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-camera-retro"></i>
+                        <i class="fas fa-expand-alt"></i>
                     </div>
-                    <div class="service-content">
-                        <h3>Photo Editing & Retouching</h3>
-                        <p>Professional photo editing and retouching services to enhance your product and business images.</p>
-                    </div>
+                    <h3 class="service-title">Large Format</h3>
+                    <p class="service-description">
+                        Eye-catching large format printing for events, retail displays, and outdoor advertising campaigns.
+                    </p>
+                    <ul class="service-features">
+                        <li class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Banners & Signs</span>
+                        </li>
+                        <li class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Trade Show Displays</span>
+                        </li>
+                        <li class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Vehicle Wraps</span>
+                        </li>
+                    </ul>
                 </div>
+                
+                <!-- Service 3 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-tags"></i>
+                        <i class="fas fa-digital-tachograph"></i>
                     </div>
-                    <div class="service-content">
-                        <h3>Food & Product Labels</h3>
-                        <p>Eye-catching labels for food products and merchandise that comply with industry standards.</p>
-                    </div>
+                    <h3 class="service-title">Digital Printing</h3>
+                    <p class="service-description">
+                        Fast, cost-effective digital printing perfect for short runs and variable data projects.
+                    </p>
+                    <ul class="service-features">
+                        <li class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Quick Turnaround</span>
+                        </li>
+                        <li class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Variable Data</span>
+                        </li>
+                        <li class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Small Batches</span>
+                        </li>
+                    </ul>
                 </div>
+                
+                <!-- Service 4 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-id-card"></i>
+                        <i class="fas fa-cogs"></i>
                     </div>
-                    <div class="service-content">
-                        <h3>Business Cards, Flyers & Posters</h3>
-                        <p>Professionally designed business cards, flyers, and posters that make a lasting impression.</p>
-                    </div>
+                    <h3 class="service-title">Finishing Services</h3>
+                    <p class="service-description">
+                        Professional finishing touches that make your printed materials stand out from the competition.
+                    </p>
+                    <ul class="service-features">
+                        <li class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Binding & Lamination</span>
+                        </li>
+                        <li class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Die Cutting</span>
+                        </li>
+                        <li class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>UV Coating</span>
+                        </li>
+                    </ul>
                 </div>
+                
+                <!-- Service 5 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-book-open"></i>
+                        <i class="fas fa-paint-brush"></i>
                     </div>
-                    <div class="service-content">
-                        <h3>Brochures, Booklets & Menus</h3>
-                        <p>Well-designed brochures, booklets, and menus that showcase your products and services effectively.</p>
-                    </div>
+                    <h3 class="service-title">Design Services</h3>
+                    <p class="service-description">
+                        Creative design services to bring your vision to life with professional graphics and layouts.
+                    </p>
+                    <ul class="service-features">
+                        <li class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Logo Design</span>
+                        </li>
+                        <li class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Brand Identity</span>
+                        </li>
+                        <li class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Marketing Materials</span>
+                        </li>
+                    </ul>
                 </div>
+                
+                <!-- Service 6 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-file-invoice"></i>
+                        <i class="fas fa-box"></i>
                     </div>
-                    <div class="service-content">
-                        <h3>Invoices, Letterheads & Banners</h3>
-                        <p>Professional invoices, letterheads, and banners that maintain brand consistency.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3>Corporate & E-commerce Web Design</h3>
-                        <p>Modern, responsive website designs for corporate and e-commerce businesses.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-share-alt"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3>Social Media Setup & Design</h3>
-                        <p>Complete social media setup including profile design, banners, and ad creatives for Facebook, Instagram, and Google Business.</p>
-                    </div>
+                    <h3 class="service-title">Custom Packaging</h3>
+                    <p class="service-description">
+                        Custom packaging solutions that protect your products while showcasing your brand beautifully.
+                    </p>
+                    <ul class="service-features">
+                        <li class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Product Boxes</span>
+                        </li>
+                        <li class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Labels & Tags</span>
+                        </li>
+                        <li class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Retail Packaging</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section class="portfolio" id="portfolio">
+    <!-- Products Section -->
+    <section class="section products-section" id="products">
         <div class="container">
             <div class="section-title">
-                <h2>Our Portfolio</h2>
-                <p>See examples of our work across various design and printing projects</p>
+                <h2>New Arrivals</h2>
+                <p>Discover our latest products and best sellers</p>
             </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Logo Design">
-                    <div class="portfolio-overlay">
-                        <h3>Logo Design</h3>
-                        <p>Brand identity for a tech startup</p>
+            
+            <div class="products-grid">
+                <!-- Product cards would be dynamically generated here -->
+                <!-- Example product card -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x200" alt="Product Name">
+                        <span class="product-badge">Sale</span>
                     </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Brochure Design">
-                    <div class="portfolio-overlay">
-                        <h3>Brochure Design</h3>
-                        <p>Product catalog for a furniture company</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Business Cards">
-                    <div class="portfolio-overlay">
-                        <h3>Business Cards</h3>
-                        <p>Premium cards for a consulting firm</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1601933470096-0e34634ffcde?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Letterhead">
-                    <div class="portfolio-overlay">
-                        <h3>Letterhead Design</h3>
-                        <p>Corporate stationery for a law firm</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Marketing Materials">
-                    <div class="portfolio-overlay">
-                        <h3>Marketing Materials</h3>
-                        <p>Campaign collateral for a retail brand</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1558655146-364adaf1fcc9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Web Design">
-                    <div class="portfolio-overlay">
-                        <h3>Web Design</h3>
-                        <p>E-commerce website for a fashion brand</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>About Hamro Print</h2>
-                    <p>With over 10 years of experience in the printing and design industry, Hamro Print has established itself as a trusted partner for businesses seeking high-quality printed materials and compelling visual designs.</p>
-                    <p>Our team of skilled designers and printing experts work closely with clients to understand their vision and deliver solutions that exceed expectations. We combine creative design with state-of-the-art printing technology to produce materials that make a lasting impression.</p>
-                    <p>From small startups to established corporations, we've helped hundreds of businesses enhance their brand presence through effective design and premium printing.</p>
-                    <a href="#contact" class="btn">Contact Us Today</a>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Our Printing Facility">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section class="process" id="process">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Process</h2>
-                <p>How we deliver exceptional results for our clients</p>
-            </div>
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <h3>Consultation</h3>
-                    <p>We discuss your requirements, goals, and vision to understand your needs.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <h3>Design & Concept</h3>
-                    <p>Our creative team develops concepts and designs based on your brief.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <h3>Review & Refine</h3>
-                    <p>We present designs for your feedback and make revisions as needed.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">4</div>
-                    <h3>Production</h3>
-                    <p>We proceed with high-quality printing using the best materials.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">5</div>
-                    <h3>Delivery</h3>
-                    <p>Your finished products are delivered on time and to your satisfaction.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Customer Reviews Section -->
-    <section class="reviews" id="reviews">
-        <div class="container">
-            <div class="section-title">
-                <h2>What Our Customers Say</h2>
-                <p>Hear from businesses we've helped with our printing and design services</p>
-            </div>
-            <div class="review-container">
-                <div class="review-slider">
-                    <div class="review-track">
-                        <div class="review-slide">
-                            <div class="review-card">
-                                <div class="review-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <p class="review-text">"Hamro Print transformed our brand identity with their exceptional logo design and business cards. The quality of printing is outstanding and their attention to detail is remarkable."</p>
-                                <p class="review-author">- Suresh Adhikari, Restaurant Owner</p>
+                    <div class="product-content">
+                        <h3 class="product-title">Custom Canvas Print</h3>
+                        <div class="product-rating">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
                             </div>
+                            <span class="rating-count">(24)</span>
                         </div>
-                        <div class="review-slide">
-                            <div class="review-card">
-                                <div class="review-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <p class="review-text">"We've been using Hamro Print for all our marketing materials for over 3 years. Their designs are always creative, and the print quality consistently exceeds our expectations."</p>
-                                <p class="review-author">- Priya Shrestha, Marketing Manager</p>
-                            </div>
+                        <div class="product-price">
+                            <span class="price-current">$80.00</span>
+                            <span class="price-original">$100.00</span>
                         </div>
-                        <div class="review-slide">
-                            <div class="review-card">
-                                <div class="review-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <p class="review-text">"The team at Hamro Print helped us set up our complete social media presence with stunning profile designs and banners. Our online engagement has increased significantly since then."</p>
-                                <p class="review-author">- Raj Kumar, E-commerce Store Owner</p>
-                            </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart">Add to Cart</button>
+                            <button class="btn-wishlist" aria-label="Add to wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
-                <div class="slider-nav">
-                    <div class="slider-dot active"></div>
-                    <div class="slider-dot"></div>
-                    <div class="slider-dot"></div>
-                </div>
+                
+                <!-- More product cards would go here -->
+            </div>
+            
+            <div class="view-all">
+                <a href="/shop" class="btn btn-secondary">View All Products</a>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials">
+    <section class="section testimonials-section" id="testimonials">
         <div class="container">
             <div class="section-title">
-                <h2>Client Testimonials</h2>
-                <p>What our clients say about our services</p>
+                <h2>What Our Customers Say</h2>
+                <p>Real feedback from verified buyers</p>
             </div>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "Hamro Print delivered exceptional business cards and brochures for our company. The quality and attention to detail were outstanding!"
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">RS</div>
-                        <div>
-                            <h4>Ramesh Shrestha</h4>
-                            <p>CEO, Tech Solutions</p>
+            
+            <div class="testimonials-slider">
+                <div class="testimonials-track" id="testimonialsTrack">
+                    <!-- Testimonial slides would be dynamically generated here -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "The quality of the canvas prints exceeded my expectations. The colors are vibrant and the finish is perfect. Will definitely order again!"
+                            </p>
+                            <div class="testimonial-author">
+                                <img src="https://via.placeholder.com/60x60" alt="Sarah Johnson" class="author-avatar">
+                                <div class="author-info">
+                                    <h4>Sarah Johnson</h4>
+                                    <p>Small Business Owner</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    
+                    <!-- More testimonial slides would go here -->
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "The team at Hamro Print understood our vision perfectly. Our new logo and brand identity have received countless compliments."
+                
+                <div class="slider-controls">
+                    <button class="slider-btn prev-btn" aria-label="Previous testimonial">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="slider-dots" id="sliderDots">
+                        <!-- Dots would be dynamically generated -->
                     </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">SP</div>
-                        <div>
-                            <h4>Sunita Poudel</h4>
-                            <p>Owner, Fashion Boutique</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "From design to delivery, the process was smooth and professional. Our marketing materials have significantly boosted our brand visibility."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">AK</div>
-                        <div>
-                            <h4>Anil Karki</h4>
-                            <p>Marketing Director, Retail Chain</p>
-                        </div>
-                    </div>
+                    
+                    <button class="slider-btn next-btn" aria-label="Next testimonial">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section class="section" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2>Contact Us</h2>
-                <p>Get in touch for a consultation or quote</p>
+                <h2>Get in Touch</h2>
+                <p>Ready to discuss your printing needs? Contact us today for expert advice and competitive pricing.</p>
             </div>
-            <div class="contact-container">
+            
+            <div class="contact-grid">
                 <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <p>Ready to bring your design and printing projects to life? Contact us today to discuss your requirements.</p>
-                    <div class="contact-details">
-                        <div class="contact-detail">
+                    <div class="contact-item">
+                        <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
-                            <p>123 Printing Street, Kathmandu, Nepal</p>
                         </div>
-                        <div class="contact-detail">
-                            <i class="fas fa-phone-alt"></i>
-                            <p>+977 1 4567890</p>
-                        </div>
-                        <div class="contact-detail">
-                            <i class="fas fa-envelope"></i>
-                            <p>info@hamroprint.com</p>
-                        </div>
-                        <div class="contact-detail">
-                            <i class="fas fa-clock"></i>
-                            <p>Sunday - Friday: 9am - 6pm</p>
+                        <div class="contact-details">
+                            <h3>Address</h3>
+                            <p>123 Print Street<br>Business District, NY 10001</p>
                         </div>
                     </div>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p>(555) 123-4567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>info@canvasprintpro.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Business Hours</h3>
+                            <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                        </div>
                     </div>
                 </div>
+                
                 <div class="contact-form">
-                    <form>
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <input type="text" placeholder="Subject">
-                        <select>
-                            <option value="" disabled selected>Select Service</option>
-                            <option value="logo">Logo Design</option>
-                            <option value="photo">Photo Editing</option>
-                            <option value="labels">Product Labels</option>
-                            <option value="business-cards">Business Cards</option>
-                            <option value="brochure">Brochures & Catalogs</option>
-                            <option value="letterheads">Letterheads</option>
-                            <option value="web">Web Design</option>
-                            <option value="social">Social Media Setup</option>
-                        </select>
-                        <textarea placeholder="Your Message" required></textarea>
-                        <button type="submit" class="btn">Send Message</button>
+                    <form id="quoteForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="firstName" class="form-label">First Name *</label>
+                                <input type="text" id="firstName" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="lastName" class="form-label">Last Name *</label>
+                                <input type="text" id="lastName" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number *</label>
+                                <input type="tel" id="phone" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="company" class="form-label">Company Name</label>
+                                <input type="text" id="company" class="form-control">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="service" class="form-label">Service Interest</label>
+                                <select id="service" class="form-control">
+                                    <option value="">Select a service...</option>
+                                    <option value="canvas">Canvas Printing</option>
+                                    <option value="business">Business & Office</option>
+                                    <option value="marketing">Marketing & Promotional</option>
+                                    <option value="gifts">Personalized Gifts</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="form-label">Project Details</label>
+                                <textarea id="message" class="form-control form-textarea" placeholder="Please describe your printing needs, quantities, timeline, etc."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-submit">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Quote Request
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -1111,147 +1764,195 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="site-footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Hamro Print</h3>
-                    <p>Your trusted partner for professional printing and design services that elevate your brand and drive business success.</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <img src="http://localhost/neptop/wp-content/uploads/2025/09/cropped-hamro-print-2.png" 
+                             alt="Canvas Print Pro" 
+                             width="150" 
+                             height="40">
+                    </div>
+                    <p>
+                        Bringing your ideas to life with professional canvas & printing. Quality you can see and feel.
+                    </p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Pinterest">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                
+                <div class="footer-links">
+                    <h3 class="footer-heading">Services</h3>
+                    <ul>
+                        <li><a href="#">Canvas Printing</a></li>
+                        <li><a href="#">Marketing Materials</a></li>
+                        <li><a href="#">Apparel & T-Shirts</a></li>
+                        <li><a href="#">Banners & Signs</a></li>
+                        <li><a href="#">Stickers & Labels</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h3>Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Logo Design</a></li>
-                        <li><a href="#">Photo Editing</a></li>
-                        <li><a href="#">Product Labels</a></li>
-                        <li><a href="#">Business Cards</a></li>
-                        <li><a href="#">Web Design</a></li>
+                
+                <div class="footer-links">
+                    <h3 class="footer-heading">Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Process</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h3>Newsletter</h3>
-                    <p>Subscribe to our newsletter for the latest updates and offers.</p>
-                    <form>
-                        <input type="email" placeholder="Your Email" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 4px; border: none;">
-                        <button type="submit" class="btn" style="width: 100%;">Subscribe</button>
+                
+                <div class="footer-newsletter">
+                    <h3 class="footer-heading">Stay Updated</h3>
+                    <p>Get exclusive deals, new service announcements, and inspiration straight to your inbox.</p>
+                    <form class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Subscribe
+                        </button>
                     </form>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2023 Hamro Print. All rights reserved.</p>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Canvas Print Pro. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa payment-icon"></i>
+                    <i class="fab fa-cc-mastercard payment-icon"></i>
+                    <i class="fab fa-cc-amex payment-icon"></i>
+                    <i class="fab fa-cc-paypal payment-icon"></i>
+                    <i class="fab fa-cc-apple-pay payment-icon"></i>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script>
         // Mobile Navigation Toggle
-        document.querySelector('.mobile-toggle').addEventListener('click', function() {
-            document.querySelector('nav').classList.toggle('active');
-        });
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
         
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Update active nav link
-                    document.querySelectorAll('nav a').forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                    
-                    // Close mobile menu if open
-                    document.querySelector('nav').classList.remove('active');
-                }
-            });
+        function toggleMenu() {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            document.body.style.overflow = !isExpanded ? 'hidden' : '';
+        }
+        
+        menuToggle.addEventListener('click', toggleMenu);
+        navOverlay.addEventListener('click', toggleMenu);
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.account-dropdown')) {
+                document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                    dropdown.style.opacity = '0';
+                    dropdown.style.visibility = 'hidden';
+                });
+            }
         });
         
         // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
             if (window.scrollY > 100) {
-                header.style.padding = '5px 0';
-                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
+                header.classList.add('scrolled');
             } else {
-                header.style.padding = '15px 0';
-                header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+                header.classList.remove('scrolled');
             }
-            
-            // Update active nav link based on scroll position
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('nav a');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 100)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
         });
         
-        // Review Slider
-        const reviewTrack = document.querySelector('.review-track');
-        const reviewSlides = document.querySelectorAll('.review-slide');
-        const dots = document.querySelectorAll('.slider-dot');
-        let currentSlide = 0;
-        
-        function goToSlide(slideIndex) {
-            reviewTrack.style.transform = `translateX(-${slideIndex * 100}%)`;
-            currentSlide = slideIndex;
-            
-            // Update dots
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === slideIndex);
+        // Form submission
+        const quoteForm = document.getElementById('quoteForm');
+        if (quoteForm) {
+            quoteForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Form submission logic would go here
+                alert('Thank you for your inquiry! We will get back to you soon.');
+                quoteForm.reset();
             });
         }
         
-        // Add click events to dots
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                goToSlide(index);
+        // Testimonials slider (basic implementation)
+        const testimonialsTrack = document.getElementById('testimonialsTrack');
+        const sliderDots = document.getElementById('sliderDots');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        
+        if (testimonialsTrack && sliderDots) {
+            const slides = testimonialsTrack.children;
+            let currentSlide = 0;
+            
+            // Create dots
+            for (let i = 0; i < slides.length; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                dot.addEventListener('click', () => goToSlide(i));
+                sliderDots.appendChild(dot);
+            }
+            
+            function goToSlide(index) {
+                currentSlide = index;
+                testimonialsTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Update dots
+                document.querySelectorAll('.slider-dot').forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentSlide);
+                });
+            }
+            
+            prevBtn.addEventListener('click', () => {
+                goToSlide(currentSlide > 0 ? currentSlide - 1 : slides.length - 1);
             });
+            
+            nextBtn.addEventListener('click', () => {
+                goToSlide(currentSlide < slides.length - 1 ? currentSlide + 1 : 0);
+            });
+        }
+        
+        // Add focus-visible class for keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.body.classList.add('focus-visible');
+            }
         });
         
-        // Auto slide every 5 seconds
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % reviewSlides.length;
-            goToSlide(currentSlide);
-        }, 5000);
+        document.addEventListener('mousedown', () => {
+            document.body.classList.remove('focus-visible');
+        });
     </script>
 </body>
 </html>
